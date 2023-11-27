@@ -1,0 +1,17 @@
+version: '3'
+services:
+  webapp:
+    image: nginx:alpine
+    volumes:
+      - ./webapp:/usr/share/nginx/html
+    ports:
+      - "8080:80"
+
+  db:
+    image: postgres:alpine
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
